@@ -13,7 +13,7 @@ public class Player implements Comparable<Player> {
 	String name; // Represents a players username
 	int rank; // Represents a players rank in the official hiscores
 	int level; // Represents a players level
-	int experience; // Represents a players experience
+	long experience; // Represents a players experience
 	
 	private int i; // Used as a return for the compareTo method
 
@@ -25,7 +25,7 @@ public class Player implements Comparable<Player> {
 	 * @param level The level of the player
 	 * @param experience The experience of the player
 	 */
-	public Player(String name, int rank, int level, int experience) {
+	public Player(String name, int rank, int level, long experience) {
 		this.name = name;
 		this.rank = rank;
 		this.level = level;
@@ -59,7 +59,7 @@ public class Player implements Comparable<Player> {
 				// Here, a bigger rank represents a lower placing. eg rank 2 < rank 1.
 				return other.rank - this.rank;
 			} else {
-				i = this.experience - other.experience;
+				i = (int) (this.experience - other.experience);
 			}
 		}
 		return i;
@@ -82,7 +82,7 @@ public class Player implements Comparable<Player> {
 	/**
 	 * @return The player's experience
 	 */
-	public int getExperience() {
+	public long getExperience() {
 		return experience;
 	}
 
@@ -115,7 +115,7 @@ public class Player implements Comparable<Player> {
 		result = 31 * (result * name.hashCode());
 		result = 31 * (result * rank);
 		result = 31 * (result * level);
-		result = 31 * (result * experience);
+		result = (int) (31 * (result * experience));
 		
 		return result;
 	}

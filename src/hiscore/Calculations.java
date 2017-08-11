@@ -29,15 +29,16 @@ public class Calculations implements Runnable {
 	 * @param position The current index of the array
 	 */
 	private static boolean connect(int position, String user) {
+		// Resolves a previous issue where a spare space would erroneously add a user to the errorList
+		user = user.trim().replaceAll("[^a-zA-Z0-9-_ ]", "").replaceAll(" ", "_");
 		// Check that the username length is valid, and if it isn't, don't process it, and add it to playerErrors.
 		if (user.length() > 12) {
-			playerErrors.add(user.trim().replaceAll("[^a-zA-Z0-9-_ ]", "").replaceAll(" ", "_"));
+			playerErrors.add(user);
 			return false;
 		}
 		// Connect to the hiscores using the username found at the position index of
 		// Utlity.playersList
-		String stringURL = "http://services.runescape.com/m=hiscore_oldschool/index_lite.ws?player="
-				+ user.trim().replaceAll("[^a-zA-Z0-9-_ ]", "").replaceAll(" ", "_");
+		String stringURL = "http://services.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" + user;
 		try {
 			// Open a connection to StringUrl
 			URL url = new URL(stringURL);
@@ -49,7 +50,7 @@ public class Calculations implements Runnable {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			playerErrors.add(user.trim().replaceAll("[^a-zA-Z0-9-_ ]", "").replaceAll(" ", "_"));
+			playerErrors.add(user);
 			return false;
 		}
 	}
@@ -70,10 +71,10 @@ public class Calculations implements Runnable {
 				String[] skillBrokenUp = currentLine.replaceAll(" ", "").split(",");
 				int rank = Integer.parseInt(skillBrokenUp[0]);
 				int level = Integer.parseInt(skillBrokenUp[1]);
-				int experience = Integer.parseInt(skillBrokenUp[2]);
+				long experience = Long.parseLong(skillBrokenUp[2]);
 
 				// Create a Player object and add this object to the players arrayList.
-				Player p = new Player(list[i].trim().replaceAll("[^a-zA-Z0-9-_^ ]", "").replaceAll("\\^", ""), rank, level, experience);
+				Player p = new Player(list[i].trim().replaceAll("[^a-zA-Z0-9-_ ]", ""), rank, level, experience);
 				// Don't add the player to the list if it is already in it. Is there a more efficient way to do this?
 				if(!players.contains(p)) {
 					players.add(p);
