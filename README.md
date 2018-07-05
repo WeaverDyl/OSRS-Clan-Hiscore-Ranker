@@ -1,7 +1,7 @@
 # OSRS-CLAN-HISCORE-RANKER
 
 ## WHAT THIS IS
-This is a GUI of the ClanHiscores class of the [OSRS-Hiscore-Grabber](https://github.com/WeaverDyl/OSRS-Hiscore-Grabber) project (a GUI for the rest of the project is coming soon or already exists).
+This is a GUI of the ClanHiscores class of the [OSRS-Hiscore-Grabber](https://github.com/WeaverDyl/OSRS-Hiscore-Grabber) project (a GUI for the rest of the project can be found [here](https://github.com/WeaverDyl/OSRS-Skill-Tracker)).
 
 This is just a very simple way to rank a list of players (perhaps friends or clan members) by their total level.
 
