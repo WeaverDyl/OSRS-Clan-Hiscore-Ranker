@@ -1,5 +1,7 @@
 # OSRS-CLAN-HISCORE-RANKER
 
+# THIS PROJECT HAS BEEN DEPRECATED IN FAVOR OF [OSRS-SKILL-TRACKER](https://github.com/WeaverDyl/OSRS-Skill-Tracker).
+
 ## WHAT THIS IS
 This is a GUI of the ClanHiscores class of the [OSRS-Hiscore-Grabber](https://github.com/WeaverDyl/OSRS-Hiscore-Grabber) project (a GUI for the rest of the project can be found [here](https://github.com/WeaverDyl/OSRS-Skill-Tracker)).
 
